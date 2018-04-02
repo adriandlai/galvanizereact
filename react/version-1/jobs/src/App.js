@@ -1,87 +1,53 @@
 import React, { Component } from 'react';
 import './App.css';
-import logo from './dino.png'; 
+import Joblist from './components/Joblist.js';
+import Footer from './components/Footer.js';
+import Header from './components/Header.js';
+import Form from './components/Form.js';
+ 
 
-const Header = () => {
-return (
-  <header className = "App-header">
-    <img src= {logo} className="App-logo" alt="logo"/>  
-  </header>
-)}
+class App extends Component {  
+  
+  state = {
+    result: [],
+    
+  };
 
-const Footer = () => {
-  return (
-    <footer>
-      <small>Copyright 2018</small>
-    </footer>
+onSubmit = (value) => {
+  console.log('daddyResult', value)
+  const result = this.state.result.concat(value)
+  
+  this.setState(
+    {result}
   )
 }
 
-class Joblist extends Component {
-constructor(props){
-  super(props);
+fetchJobs() { 
+   const apiURL = "./listings.json";
 
-  this.state = {
-    result: null
-  }
-  this.fetchJobs = this.fetchJobs.bind(this)
-}
-
-  fetchJobs(){ 
-      let apiURL = "./listings.json";
-      return (
-      fetch(apiURL)
-      .then(response => response.json())
-      .then(result => {
-        console.log('thisresult', result)
-        this.setJobs(result)
-      }
-      )
-      .catch(e => e)  
-        
-      
-      ) 
+   return fetch(apiURL)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({ result: data })
+    })
+    .catch((err) => console.log('err', err))  
   }
 
-  render (){
-  return (
-  <section>
-    <h2>Job Listings</h2>
-    <ul id="job-listings">
-    </ul>
-  </section>
-  )
-  }
+componentDidMount() { 
+  this.fetchJobs()
 }
 
-const Form = () => {
-  return (
-    <aside id="side-bar">
-        <h3>Add a Job</h3>
-        <form className="job-form">
-          <label htmlFor="title">Title</label>
-          <input type="text" name="title"/>
-          <label htmlFor="pay">Compensation</label>
-          <input type="text" name="pay"/>
-          <label htmlFor="description">Description</label>
-          <textarea name="description" rows="8" cols="40"></textarea>
-          <input type="submit" name="submit" value="Submit" />
-        </form>
-      </aside>
-  )
-}
-
-class App extends Component {
+  
   render() {
     return (
-        <body>
+          <div>
             <Header/>
             <main>
-            <Joblist/>
-            <Form/>
+            <Joblist list ={this.state.result}/>
+            <Form onFormSubmit = {this.onSubmit}/>
            </main>
            <Footer />
-        </body>
+          </div>
     );
   }
 }
@@ -89,35 +55,6 @@ class App extends Component {
 export default App;
 
 
-// function submitForm(event){
-//   event.preventDefault();
-//   const data = new FormData(event.target);
-//   addListing({
-//     title: data.get("title"),
-//     pay: data.get("pay"),
-//     description: data.get("description"),
-//     interested: []
-//   });
-//   event.target.reset();
-// }
 
-// function addListing(data){
-//   let container = document.querySelector("#job-listings");
-//   let listing = document.createElement("li");
-//   buildListing(listing, [{
-//     selector: "h4",
-//     data: data.title
-//   },{
-//     selector: "small",
-//     data: `${data.pay}`
-//   },{
-//     selector: "p",
-//     data: data.description
-//   },{
-//     selector: "small",
-//     data: `${data.interested.length} dinos are interested in this job`
-//   }]);
-//   container.prepend(listing);
-// }
 
 
