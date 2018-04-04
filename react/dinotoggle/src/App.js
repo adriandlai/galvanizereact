@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Joblist from './components/Joblist.js';
+import Profiles from './components/Profiles.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
-import Form from './components/Form.js';
 
 
 class App extends Component {
@@ -13,16 +12,16 @@ class App extends Component {
 
   };
 
-  onSubmit = (value) => {
-    const result = this.state.result.concat(value)
+  // // onSubmit = (value) => {
+  // //   const result = this.state.result.concat(value)
 
-    this.setState(
-      { result }
-    )
-  }
+  //   this.setState(
+  //     { result }
+  //   )
+  // }
 
-  fetchJobs() {
-    const apiURL = "./listings.json";
+fetchList() {
+    const apiURL = "./dinosaurs.json";
 
     return fetch(apiURL)
       .then(response => response.json())
@@ -32,18 +31,18 @@ class App extends Component {
       .catch((err) => console.log('err', err))
   }
 
-  componentDidMount() {
-    this.fetchJobs()
-  }
+componentDidMount() {
 
+    this.fetchList()
+
+  }
 
   render() {
     return (
       <div>
         <Header />
         <main>
-          <Joblist list={this.state.result} />
-          <Form onFormSubmit={this.onSubmit} />
+        <Profiles list={this.state.result}/>
         </main>
         <Footer />
       </div>
@@ -52,8 +51,6 @@ class App extends Component {
 }
 
 export default App;
-
-
 
 
 
