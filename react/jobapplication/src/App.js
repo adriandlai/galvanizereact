@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import Profiles from './components/Profiles.js';
+import Inputform from './components/Inputform.js';
+import Jobdetails from './components/Jobdetails.js';
 import Footer from './components/Footer.js';
 import Header from './components/Header.js';
-
 
 class App extends Component {
 
   state = {
     result: []
+  }
 
-  };
 
-
-fetchList() {
-    const apiURL = "./dinosaurs.json";
+ 
+  fetchJobs() {
+    const apiURL = "./listing.json";
 
     return fetch(apiURL)
       .then(response => response.json())
@@ -24,26 +25,21 @@ fetchList() {
       .catch((err) => console.log('err', err))
   }
 
-componentDidMount() {
-
-    this.fetchList()
-
-  }
-
+  componentDidMount() {
+    this.fetchJobs()
+  }  
   render() {
     return (
       <div>
-        <Header />
-        <main>
-        <Profiles list={this.state.result}/>
-        </main>
-        <Footer />
+      <Header/>
+      <main>
+      <Jobdetails job = {this.state.result}/>
+      <Inputform/>
+      </main>
+      <Footer/>
       </div>
     );
   }
 }
 
 export default App;
-
-
-
