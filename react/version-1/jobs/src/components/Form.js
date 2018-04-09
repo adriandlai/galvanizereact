@@ -14,16 +14,12 @@ class Form extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-
-    console.log('Submit: this.state: ', this.state);
-
     this.props.onFormSubmit(this.state)
     this.reset()
   }
 
   handleChange = (event) => {
-    console.log('changed!!!', { [event.target.name]: event.target.value });
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   reset = () => {
