@@ -13,7 +13,7 @@ class App extends Component {
   };
 
 
-fetchList() {
+  fetchList() {
     const apiURL = "./dinosaurs.json";
 
     return fetch(apiURL)
@@ -24,10 +24,8 @@ fetchList() {
       .catch((err) => console.log('err', err))
   }
 
-componentDidMount() {
-
+  componentDidMount() {
     this.fetchList()
-
   }
 
   render() {
@@ -35,11 +33,11 @@ componentDidMount() {
       <div>
         <Header />
         <main>
-        <Profiles list={this.state.result}/>
+          <Profiles list={this.state.result} />
         </main>
         <Footer />
       </div>
-    );
+    )
   }
 }
 

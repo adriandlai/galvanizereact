@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from '../dino.png';
 
 const Header = () => {
   return (
