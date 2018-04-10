@@ -37,7 +37,7 @@ render(){
             <textarea onChange={this.handleChange} value={this.state.input} name="input" id="application-text" rows="8" cols="100"></textarea>
             <input id="submit" type="submit" value="Submit"/>
             </form>   
-            <p>{this.state.message}</p> 
+            <p id="message">{this.state.message}</p> 
             <Preview text = {this.state.input}/>
             </div>
                  

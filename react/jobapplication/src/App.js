@@ -13,7 +13,7 @@ class App extends Component {
   }
 
 
- 
+
   fetchJobs() {
     const apiURL = "./listing.json";
 
@@ -27,16 +27,16 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchJobs()
-  }  
+  }
   render() {
     return (
       <div>
-      <Header/>
-      <main>
-      <Jobdetails job = {this.state.result}/>
-      <Inputform/>
-      </main>
-      <Footer/>
+        <Header />
+        <main>
+          <Jobdetails job={this.state.result} />
+          <Inputform />
+        </main>
+        <Footer />
       </div>
     );
   }
