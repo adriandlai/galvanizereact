@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './Form.css';
+import React, { Component } from 'react'
+import './Form.css'
 
 
 class Form extends Component {
@@ -13,10 +13,12 @@ class Form extends Component {
   }
 
   onFormSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     this.props.onFormSubmit(this.state)
     this.reset()
   }
+
+  
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value })

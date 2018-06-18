@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import Joblist from './components/Joblist.js';
-import Footer from './components/Footer.js';
-import Header from './components/Header.js';
-import Form from './components/Form.js';
+import React, { Component } from 'react'
+import './App.css'
+import Joblist from './components/Joblist.js'
+import Footer from './components/Footer.js'
+import Header from './components/Header.js'
+import Form from './components/Form.js'
 
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
   state = {
     result: [],
 
-  };
+  }
 
   onSubmit = (value) => {
     const result = this.state.result.concat(value)
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   fetchJobs() {
-    const apiURL = "./listings.json";
+    const apiURL = "./listings.json"
 
     return fetch(apiURL)
       .then(response => response.json())
