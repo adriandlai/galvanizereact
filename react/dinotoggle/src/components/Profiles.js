@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import Skills from './Skills.js';
+import React, { Component } from 'react'
+import Skills from './Skills.js'
 
 
 class Profiles extends Component {
     constructor(props) {
-        super(props);
+        super(props)
     }
 
     toggleDetails = (e) => {
@@ -45,7 +45,7 @@ class Profiles extends Component {
     }
 }
 
-export default Profiles;
+export default Profiles
 
 
 
