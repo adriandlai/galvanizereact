@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Preview from './Preview.js';
+import React, { Component } from 'react'
+import Preview from './Preview.js'
 
 
 
@@ -11,7 +11,7 @@ class Inputform extends Component {
     }
 
     onSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault()
 
 
         console.log('event', event)
@@ -24,8 +24,8 @@ class Inputform extends Component {
 
 
     handleChange = (event) => {
-        console.log('changed!!!', { [event.target.name]: event.target.value });
-        this.setState({ [event.target.name]: event.target.value });
+        console.log('changed!!!', { [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     render() {
@@ -45,6 +45,6 @@ class Inputform extends Component {
     }
 }
 
-export default Inputform;
+export default Inputform
 
 
